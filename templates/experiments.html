@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Experiments – BioDash</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+<nav>
+  <div class="brand" onclick="location.href='/'">BioDash</div>
+  <div class="links">
+    <a href="/">Dashboard</a>
+    <a class="active" href="/experiments">Experiments</a>
+    <a href="/alerts">Alerts</a>
+    <button id="logoutBtn">Logout</button>
+    <button id="darkToggle">🌙</button>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- =======================
+       CREATE EXPERIMENT
+       ======================= -->
+  <div class="card">
+    <h2 style="text-align:left;">Experiment Registry</h2><br><br>
+
+    <form id="experimentForm" class="form-card">
+      <label>Name</label>
+      <input id="expName" required>
+
+      <label>Description</label>
+      <textarea id="expDesc" rows="3"></textarea>
+
+      <label>Type</label>
+      <select id="expType">
+        <option value="">Select...</option>
+        <option>RNA-seq</option>
+        <option>Proteomics</option>
+        <option>Metabolomics</option>
+        <option>Imaging</option>
+        <option>Biochemical Assay</option>
+        <option value="other">Custom…</option>
+      </select>
+
+      <input id="customType" placeholder="Custom type..." style="display:none;margin-top:6px;">
+
+      <label>Organism</label>
+      <input id="expOrganism">
+
+      <label>PI</label>
+      <input id="expPI">
+
+      <label>Start Date</label>
+      <input type="date" id="expDate">
+
+      <button class="btn" style="margin-top:18px;">Save Experiment</button>
+    </form>
+  </div>
+
+  <!-- =======================
+       EXISTING EXPERIMENTS
+       ======================= -->
+  <div class="card">
+    <h3 style="text-align:left;">Existing Experiments</h3>
+
+<table id="expTable">
+  <thead>
+    <tr>
+      <th style="text-align:left;">Name</th>
+      <th style="text-align:left;">Type</th>
+      <th style="text-align:left;">Organism</th>
+      <th style="text-align:left;">PI</th>
+      <th style="text-align:left;">Date</th>
+      <th style="text-align:left;">View</th>
+      
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+  </div>
+
+</div>
+
+<div id="toast"></div>
+
+<script src="/static/js/main.js"></script>
+<script>
+window.initExperimentsPage();
+document.getElementById("logoutBtn").onclick = () => {
+  fetch("/logout",{method:"POST"}).then(()=>location="/login");
+};
+</script>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Experiment Workspace – BioDash</title>
+
+  <link rel="stylesheet" href="/static/css/style.css">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- XLSX (Excel Import) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+
+<body>
+
+<nav>
+  <div class="brand" onclick="location.href='/'">BioDash</div>
+  <div class="links">
+    <a href="/">Dashboard</a>
+    <a href="/experiments">Experiments</a>
+    <a href="/alerts">Alerts</a>
+    <button id="logoutBtn">Logout</button>
+    <button id="darkToggle">🌙</button>
+  </div>
+</nav>
+
+<div class="container">
+
+  
+  <h2 id="expTitle">Experiment</h2> <br><br>
+  <p id="expMeta" class="small"></p>
+
+  <hr>
+
+  
+  <div class="card">
+    <h3>Import File (CSV / TSV / XLSX)</h3>
+
+    <input type="file" id="bulkDataFile" accept=".csv,.tsv,.xlsx,.xls,text/csv,text/tsv"><br><br>
+
+    <div style="margin-top:10px;">
+      <button id="importCsv" class="btn">Import File</button>
+    </div>
+  </div>
+
+  
+  <div class="card param-add-card">
+    <h3>Add New Parameter</h3>
+
+    <input id="newParamName" placeholder="Parameter name" style="width:220px;">
+    <button id="addParamFieldTop" class="btn" style="margin-left:8px;">Add Parameter</button><br>
+
+    <p class="small" style="margin-top:5px;">
+      Add new column to the data table.
+    </p>
+  </div>
+
+  <!-- PARAMETERS LIST -->
+  <div class="card">
+    <h3>Parameters</h3>
+
+    <div id="paramList" style="margin-bottom:10px;"></div>
+  </div>
+
+  <!-- CRITICAL PARAMETERS -->
+  <div class="card">
+    <h3>Critical Parameters</h3>
+
+    <div id="criticalParamContainer">
+      <!-- JS will insert fields like:
+           Dropdown + Threshold + Delete button -->
+    </div>
+
+    <button id="addCriticalParamBtn" class="btn-ghost" style="margin-top:10px;">
+      + Add Critical Parameter
+    </button>
+  </div>
+
+  <!-- DATA TABLE -->
+  <div class="card">
+    <h3>Data Table</h3>
+
+    <input id="entryFilter" placeholder="Search..." style="margin-bottom:8px;">
+
+    <div id="entryContainer"></div>
+
+    <button id="addRow" class="btn-ghost" style="margin-top:10px;">+ Add Row</button>
+    <button id="saveAll" class="btn" style="margin-top:10px;">Save All</button>
+  </div>
+
+  <!-- VISUALISATION -->
+  <div class="card">
+    <h3>Visualisation</h3>
+
+    <label>Chart Type</label>
+    <select id="vizType">
+      <option value="line">Line</option>
+      <option value="bar">Bar</option>
+      <option value="pie">Pie</option>
+      
+    </select>
+
+    <label style="margin-top:6px;">Parameter</label>
+    <select id="vizParam"></select>
+
+    <button id="drawViz" class="btn" style="margin-top:10px;">Draw</button>
+
+    <canvas id="vizChart" height="180" style="margin-top:12px;width:100%;"></canvas>
+  </div>
+
+  <!-- DELETE EXPERIMENT -->
+  <div style="margin-top:20px;">
+    <button id="deleteExpBtn" class="btn-ghost" style="color:#d9534f;">
+      Delete This Experiment
+    </button>
+  </div>
+
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<script src="/static/js/main.js"></script>
+<script>
+if (typeof window.initExperimentView === "function") {
+  window.initExperimentView();
+}
+</script>
+
+</body>
+</html>

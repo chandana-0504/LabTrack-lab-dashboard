@@ -1,0 +1,326 @@
+/* ===========================================================
+   BioDash – Turquoise Lab UI (Light + Night Mode)
+   Final Cleaned Version (No Duplicates)
+   =========================================================== */
+
+/* ---------------------- Light Mode ---------------------- */
+:root {
+  --bg: #f5fbfd;
+  --bg2: #ffffff;
+  --card: #ffffff;
+
+  --text: #23323a;
+  --text-soft: #546770;
+
+  --accent: #2ab7b0;
+  --accent-dark: #1d9e95;
+
+  --border: #d9e6ea;
+  --shadow: 0 4px 18px rgba(0,0,0,0.07);
+
+  --radius: 12px;
+  --transition: all 0.25s ease;
+
+  --toast-success: #2ab7b0;
+  --toast-error: #d9534f;
+}
+
+/* ---------------------- Dark Mode ---------------------- */
+html.dark {
+  --bg: #0d1a1d;
+  --bg2: #0f2226;
+  --card: #12272c;
+
+  --text: #daf2f3;
+  --text-soft: #92b4b8;
+
+  --accent: #32d4cc;
+  --accent-dark: #27b6af;
+
+  --border: #163035;
+  --shadow: 0 6px 22px rgba(0,0,0,0.55);
+
+  --toast-success: #32d4cc;
+  --toast-error: #ff6b6b;
+}
+
+/* ---------------------- Special Cards ---------------------- */
+.param-add-card { background: #eef6ff !important; }
+html.dark .param-add-card { background: #1e2a3a !important; }
+
+/* ---------------------- Base ---------------------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Inter","Segoe UI",Arial,sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  transition: var(--transition);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------------------- Navbar ---------------------- */
+nav {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: var(--transition);
+}
+
+nav .brand {
+  cursor: pointer;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--accent-dark);
+}
+
+nav .links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+nav .links a {
+  text-decoration: none;
+  color: var(--text-soft);
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+nav .links a:hover,
+nav .links a.active { color: var(--accent-dark); }
+
+nav .links button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--text);
+  font-size: 1.15rem;
+  transition: var(--transition);
+}
+
+nav .links button:hover {
+  transform: scale(1.15);
+  color: var(--accent-dark);
+}
+
+/* ---------------------- Layout ---------------------- */
+.container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 18px;
+}
+
+/* ---------------------- Cards ---------------------- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.card h3 {
+  color: var(--accent-dark);
+  margin-bottom: 10px;
+}
+
+/* ---------------------- Buttons ---------------------- */
+button,
+.btn {
+  padding: 10px 16px;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+button:hover,
+.btn:hover { background: var(--accent-dark); }
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-danger {
+  background: #d9534f;
+  color: #fff;
+}
+.btn-danger:hover { background: #b44440; }
+
+/* ---------------------- Inputs ---------------------- */
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  background: var(--bg2);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  color: var(--text);
+  transition: var(--transition);
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+/* Password wrapper */
+.pass-wrap { position: relative; width:100%; margin-top:6px; }
+.pass-wrap input { padding-right:42px; }
+.pass-wrap .togglePass {
+  position:absolute;
+  right:10px;
+  top:50%;
+  transform:translateY(-50%);
+  background:none;
+  border:none;
+  cursor:pointer;
+  font-size:1.15rem;
+  color:var(--text-soft);
+}
+
+/* ---------------------- Param List ---------------------- */
+.param-item {
+  padding: 10px 12px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 8px;
+}
+
+/* ---------------------- Manual Entry Rows ---------------------- */
+.entry-row {
+  display:flex;
+  gap:10px;
+  margin-bottom:10px;
+}
+
+.entry-row input { flex:1; }
+
+.entry-row .del {
+  background:#d9534f;
+  color:#fff;
+  border-radius:var(--radius);
+  padding:0 12px;
+  font-size:1.2rem;
+}
+
+/* ---------------------- Tables (Unified) ---------------------- */
+table {
+  width:100%;
+  border-collapse:collapse;
+  margin-top:12px;
+}
+
+th, td {
+  padding:12px 10px;
+  border-bottom:1px solid var(--border);
+  background: var(--bg2);
+  color: var(--text);
+}
+
+th {
+  background: var(--bg2);
+  color: var(--text-soft);
+  font-weight:600;
+  font-size:.9rem;
+}
+
+/* Dark mode header fix */
+html.dark table th {
+  background:#2a2a2a !important;
+  color:#e8f7f7;
+}
+
+/* Hover effect */
+tr:hover { background: rgba(42,183,176,0.08); }
+
+/* Delete button in table rows */
+.table-del {
+  background:#d9534f;
+  color:#fff;
+  padding:6px 14px;
+  border-radius:var(--radius);
+  cursor:pointer;
+}
+
+/* ---------------------- Graph Panel ---------------------- */
+.graph-panel {
+  position:fixed;
+  top:0;
+  right:-420px;
+  width:400px;
+  height:100%;
+  background:var(--bg2);
+  box-shadow:-4px 0 18px rgba(0,0,0,0.25);
+  border-left:1px solid var(--border);
+  padding:22px;
+  transition:right .35s ease;
+  overflow-y:auto;
+  z-index:1200;
+}
+
+.graph-panel.open { right:0; }
+
+.graph-close {
+  background:none;
+  border:none;
+  font-size:1.8rem;
+  float:right;
+  cursor:pointer;
+  color:var(--text);
+}
+
+/* ---------------------- Toast ---------------------- */
+#toast {
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  padding:14px 22px;
+  border-radius:var(--radius);
+  background:var(--toast-success);
+  color:white;
+  font-weight:600;
+  box-shadow:var(--shadow);
+  opacity:0;
+  transform:translateY(10px);
+  pointer-events:none;
+  transition:var(--transition);
+  z-index:999;
+}
+
+#toast.error { background:var(--toast-error); }
+
+#toast.show {
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ---------------------- Responsive ---------------------- */
+@media (max-width:700px) {
+  nav .links a { display:none; }
+  .card { padding:16px; }
+  .entry-row { flex-direction:column; }
+}
+

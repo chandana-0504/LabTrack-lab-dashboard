@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Login – BioDash</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+<nav>
+  <div class="brand" onclick="location.href='/'">BioDash</div>
+  <div class="links">
+    <a href="/register">Register</a>
+    <button id="darkToggle">🌙</button>
+  </div>
+</nav>
+
+<div class="container" style="max-width:420px;margin-top:50px;">
+
+  <div class="card">
+    <h2 style="margin-bottom:20px;">Sign In</h2>
+
+    <form id="loginForm">
+      
+      <label>Username</label>
+      <input type="text" id="username" required>
+
+      <label>Password</label>
+
+      <div class="pass-wrap">
+        <input type="password" id="password" required>
+        <button type="button" class="togglePass">👁️‍🗨️</button>
+      </div>
+
+      <button style="width:100%;margin-top:14px;">Login</button>
+
+      <p style="margin-top:14px;color:var(--text-soft);">
+        No account?
+        <a href="/register" style="color:var(--accent-dark);font-weight:600;">Register</a>
+      </p>
+
+    </form>
+  </div>
+
+</div>
+
+<div id="toast"></div>
+<script src="/static/js/main.js"></script>
+
+<!-- Password toggle logic -->
+<script>
+document.querySelectorAll(".togglePass").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const input = btn.previousElementSibling;
+    if (input.type === "password") {
+      input.type = "text";
+      btn.innerText = "🙈";
+    } else {
+      input.type = "password";
+      btn.innerText = "👁️‍🗨️";
+    }
+  });
+});
+</script>
+
+</body>
+</html>

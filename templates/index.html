@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>BioDash Dashboard</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<nav>
+  <div class="brand" onclick="location.href='/'">BioDash</div>
+  <div class="links">
+    <a href="/" class="active">Dashboard</a>
+    <a href="/experiments">Experiments</a>
+    <a href="/alerts">Alerts</a>
+    <button id="logoutBtn">Logout</button>
+    <button id="darkToggle">🌙</button>
+  </div>
+</nav>
+
+<div class="container">
+
+  <h2 style="margin-bottom:20px;">Welcome, Researcher</h2>
+
+  <div class="card-grid">
+    <div class="card">
+      <h3>Experiments</h3>
+      <p id="expCount">0</p>
+    </div>
+    <div class="card">
+      <h3>Data Entries</h3>
+      <p id="sensorCount">0</p>
+    </div>
+    <div class="card">
+      <h3>Active Alerts</h3>
+      <p id="alertCount">0</p>
+    </div>
+  </div>
+
+  <div class="card canvas-card">
+    <h3>Recent Trend</h3>
+    <canvas id="chart" height="100"></canvas>
+  </div>
+
+</div>
+
+<div id="toast"></div>
+<script src="/static/js/main.js"></script>
+<script>
+window.initDashboard();
+document.getElementById("logoutBtn").onclick = () => {
+  fetch("/logout",{method:"POST"}).then(()=>location="/login");
+};
+</script>
+
+</body>
+</html>

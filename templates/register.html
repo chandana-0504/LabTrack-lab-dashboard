@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Create Account – BioDash</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+<nav>
+  <div class="brand" onclick="location.href='/'">BioDash</div>
+  <div class="links">
+    <a href="/login">Login</a>
+    <button id="darkToggle">🌙</button>
+  </div>
+</nav>
+
+<div class="container" style="max-width:420px;margin-top:50px;">
+
+  <div class="card">
+    <h2 style="margin-bottom:20px;">Register</h2>
+
+    <form id="registerForm">
+
+      <label>Username</label>
+      <input type="text" id="username" required>
+
+      <label>Password</label>
+      <div class="pass-wrap">
+        <input type="password" id="password" required>
+        <button type="button" class="togglePass">👁️‍🗨️</button>
+      </div>
+
+      <label>Confirm Password</label>
+      <div class="pass-wrap">
+        <input type="password" id="confirm" required>
+        <button type="button" class="togglePass">👁️‍🗨️</button>
+      </div>
+
+      <button style="width:100%;margin-top:14px;">Create Account</button>
+
+      <p style="margin-top:14px;color:var(--text-soft);">
+        Already registered?
+        <a href="/login" style="color:var(--accent-dark);font-weight:600;">Sign In</a>
+      </p>
+
+    </form>
+  </div>
+
+</div>
+
+<div id="toast"></div>
+<script src="/static/js/main.js"></script>
+
+<script>
+// password eye toggle for both fields
+document.querySelectorAll(".togglePass").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const input = btn.previousElementSibling;
+    const isHidden = input.type === "password";
+    input.type = isHidden ? "text" : "password";
+    btn.innerText = isHidden ? "🙈" : "👁️‍🗨️";
+  });
+});
+
+// confirm password check before main.js handles register
+document.getElementById("registerForm").addEventListener("submit", (e) => {
+  const p1 = document.getElementById("password").value;
+  const p2 = document.getElementById("confirm").value;
+
+  if (p1 !== p2) {
+    e.preventDefault();
+    toast("Passwords do not match", true);
+  }
+});
+</script>
+
+</body>
+</html>
