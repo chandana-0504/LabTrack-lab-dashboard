@@ -23,23 +23,44 @@ BioDash is a web-based dashboard for storing, managing, and visualizing laborato
 
 ## Installation
 
-Clone repository
+ 1. Clone the repository
 
-git clone https://github.com/chandana-0504/biodash-lab-dashboard.git
+git clone https://github.com/chandana-0504/biodash-lab-dashboard.git  
 cd biodash-lab-dashboard
 
-python -m venv venv
+ 2. Create a virtual environment
+
+python -m venv venv  
 source venv/bin/activate
+
+ 3. Install dependencies
 
 pip install -r requirements.txt
 
+ 4. Create the MySQL database
+
+This project requires a MySQL database named **biodash**.
+
+Open MySQL:
+
+mysql -u root -p
+
+Then run:
+
+CREATE DATABASE biodash;
+
+You do **not** need to create tables manually.  
+The application automatically creates all required tables when the server starts.
+
+ 5. Run the application
+
 uvicorn main:app --reload
 
-#Open any browser and go to:
+ 6. Open the dashboard
+
+Open your browser and go to:
 
 http://127.0.0.1:8000
-
-Requires MySQL database named "biodash"
 
 ## Project Structure
 
