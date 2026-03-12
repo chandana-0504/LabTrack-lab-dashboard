@@ -21,6 +21,13 @@ BioDash is a web-based dashboard for storing, managing, and visualizing laborato
 - Chart.js
 - HTML/CSS
 
+## Requirements
+
+- Python 3.11 or higher  
+- MySQL Server
+
+(Tested with Python 3.13)
+
 ## Installation
 
  1. Clone the repository
