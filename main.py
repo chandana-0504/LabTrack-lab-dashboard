@@ -20,8 +20,11 @@ from passlib.hash import bcrypt
 # ============================================================
 # CONFIG
 # ============================================================
-MYSQL_USER = os.environ.get("MYSQL_USER", "biodash_user")
-MYSQL_PASSWORD = os.environ.get("MYSQL_PASSWORD", "biodash_pass")
+from dotenv import load_dotenv
+load_dotenv()
+
+MYSQL_USER = os.environ["MYSQL_USER"]
+MYSQL_PASSWORD = os.environ["MYSQL_PASSWORD"]
 MYSQL_DB = os.environ.get("MYSQL_DB", "biodash")
 MYSQL_UNIX_SOCKET = os.environ.get("MYSQL_UNIX_SOCKET", "/var/run/mysqld/mysqld.sock")
 

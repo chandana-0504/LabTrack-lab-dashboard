@@ -28,6 +28,8 @@ BioDash is a web-based dashboard for storing, managing, and visualizing laborato
 
 (Tested with Python 3.13)
 
+
+
 ## Installation
 
  1. Clone the repository
@@ -52,18 +54,30 @@ Open MySQL:
 
 mysql -u root -p
 
-Then run:
-
 CREATE DATABASE biodash;
 
-You do **not** need to create tables manually.  
+CREATE USER 'your_user'@'localhost' IDENTIFIED BY 'your_password';
+GRANT ALL PRIVILEGES ON biodash.* TO 'your_user'@'localhost';
+FLUSH PRIVILEGES;
+
+note:You do **not** need to create tables manually.  
 The application automatically creates all required tables when the server starts.
 
- 5. Run the application
+
+ 5. Configure enviornment variables
+ 
+create a .env file in the project root: (if in terminal do - nano .env)
+
+MYSQL_USER=your_user
+MYSQL_PASSWORD=your_password
+MYSQL_DB=biodash
+
+
+ 6. Run the application
 
 uvicorn main:app --reload
 
- 6. Open the dashboard
+ 7. Open the dashboard
 
 Open your browser and go to:
 

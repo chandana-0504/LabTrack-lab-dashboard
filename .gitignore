@@ -1,6 +1,7 @@
+.env
 __pycache__/
 *.pyc
-*.py[cod]
-wp/
-.env
-.vscode/
+*.pyo
+*.pyd
+venv/
+biod/
